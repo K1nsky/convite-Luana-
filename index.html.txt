@@ -1,0 +1,157 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>❤️ Um Convite Especial ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="particulas"></div>
+
+    <main class="container">
+
+        <!-- Tela inicial -->
+        <section class="tela ativa" id="tela1">
+
+            <h1>❤️ Oi, Luana...</h1>
+
+            <p>
+                Tenho uma surpresa preparada especialmente para você.
+            </p>
+
+            <button onclick="proximaTela(2)">
+                Começar ✨
+            </button>
+
+        </section>
+
+
+        <!-- Envelope -->
+        <section class="tela" id="tela2">
+
+            <div class="envelope">
+                💌
+            </div>
+
+            <h2>
+                Você recebeu um convite especial.
+            </h2>
+
+            <button onclick="proximaTela(3)">
+                Abrir convite
+            </button>
+
+        </section>
+
+
+        <!-- Carta -->
+        <section class="tela" id="tela3">
+
+            <h1>💖</h1>
+
+            <p id="carta">
+                Luana, preparei esse pequeno convite porque queria criar um momento especial com você.
+                Espero que esse seja o começo de uma lembrança incrível. ❤️
+            </p>
+
+            <button onclick="proximaTela(4)">
+                Continuar
+            </button>
+
+        </section>
+
+
+        <!-- Pergunta -->
+        <section class="tela" id="tela4">
+
+            <h1>
+                Aceita sair comigo? ❤️
+            </h1>
+
+            <div class="botoes">
+
+                <button onclick="aceitou()">
+                    SIM ❤️
+                </button>
+
+                <button id="nao">
+                    NÃO 😅
+                </button>
+
+            </div>
+
+            <p id="mensagem"></p>
+
+        </section>
+
+
+        <!-- Data -->
+        <section class="tela" id="tela5">
+
+            <h1>
+                🎉 Eu sabia!
+            </h1>
+
+            <p>
+                Agora escolha o dia do nosso encontro.
+            </p>
+
+            <input type="date" id="data">
+
+            <input type="time" id="hora">
+
+            <button onclick="confirmar()">
+                Confirmar ❤️
+            </button>
+
+        </section>
+
+
+        <!-- Final -->
+        <section class="tela" id="tela6">
+
+            <h1>
+                🏆 Convite Confirmado!
+            </h1>
+
+            <p id="resumo"></p>
+
+            <div class="recompensas">
+
+                <h3>
+                    Recompensas desbloqueadas:
+                </h3>
+
+                <p>😺 Uma promessa de muitos sorrisos</p>
+                <p>😂 Minhas piadas ruins (inclusas)</p>
+                <p>😎 Minha companhia</p>
+                <p>❤️ Um encontro especial</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <canvas id="confetes"></canvas>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
