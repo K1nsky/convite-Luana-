@@ -3,7 +3,7 @@
 ==========================================*/
 
 const SEU_NOME = "Hugo";
-const WHATSAPP = "55816992894607"; // Troque pelo seu número
+const WHATSAPP = "5516992894607"; // Troque pelo seu número
 
 /*==========================================
     TELAS
