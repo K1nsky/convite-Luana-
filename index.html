@@ -1,157 +1,190 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>❤️ Um Convite Especial ❤️</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <div id="particulas"></div>
+    <div id="particles"></div>
 
-    <main class="container">
+    <div class="container">
 
-        <!-- Tela inicial -->
-        <section class="tela ativa" id="tela1">
+        <!-- TELA 1 -->
 
-            <h1>❤️ Oi, Luana...</h1>
+        <section class="screen active" id="screen1">
+
+            <h1>❤️ Oi Luana...</h1>
 
             <p>
+
                 Tenho uma surpresa preparada especialmente para você.
+
             </p>
 
-            <button onclick="proximaTela(2)">
+            <button id="btnStart">
+
                 Começar ✨
+
             </button>
 
         </section>
 
+        <!-- TELA 2 -->
 
-        <!-- Envelope -->
-        <section class="tela" id="tela2">
+        <section class="screen" id="screen2">
 
             <div class="envelope">
+
                 💌
+
             </div>
 
             <h2>
-                Você recebeu um convite especial.
+
+                Você recebeu um convite.
+
             </h2>
 
-            <button onclick="proximaTela(3)">
+            <button id="btnOpen">
+
                 Abrir convite
+
             </button>
 
         </section>
 
+        <!-- TELA 3 -->
 
-        <!-- Carta -->
-        <section class="tela" id="tela3">
+        <section class="screen" id="screen3">
 
             <h1>💖</h1>
 
-            <p id="carta">
-                Luana, preparei esse pequeno convite porque queria criar um momento especial com você.
-                Espero que esse seja o começo de uma lembrança incrível. ❤️
-            </p>
+            <p id="letter"></p>
 
-            <button onclick="proximaTela(4)">
+            <button id="btnContinue">
+
                 Continuar
+
             </button>
 
         </section>
 
+        <!-- TELA 4 -->
 
-        <!-- Pergunta -->
-        <section class="tela" id="tela4">
+        <section class="screen" id="screen4">
 
             <h1>
-                Aceita sair comigo? ❤️
+
+                Aceita sair comigo?
+
             </h1>
 
-            <div class="botoes">
+            <div class="buttons">
 
-                <button onclick="aceitou()">
+                <button id="btnYes">
+
                     SIM ❤️
+
                 </button>
 
-                <button id="nao">
+                <button id="btnNo">
+
                     NÃO 😅
+
                 </button>
 
             </div>
 
-            <p id="mensagem"></p>
+            <div id="funnyMessage"></div>
 
         </section>
 
+        <!-- TELA 5 -->
 
-        <!-- Data -->
-        <section class="tela" id="tela5">
+        <section class="screen" id="screen5">
 
             <h1>
+
                 🎉 Eu sabia!
+
             </h1>
 
             <p>
-                Agora escolha o dia do nosso encontro.
+
+                Agora escolha um dia para nosso encontro.
+
             </p>
 
-            <input type="date" id="data">
+            <input type="date" id="meetingDate">
 
-            <input type="time" id="hora">
+            <input type="time" id="meetingTime">
 
-            <button onclick="confirmar()">
+            <button id="btnConfirm">
+
                 Confirmar ❤️
+
             </button>
 
         </section>
 
+        <!-- TELA 6 -->
 
-        <!-- Final -->
-        <section class="tela" id="tela6">
+        <section class="screen" id="screen6">
 
             <h1>
+
                 🏆 Convite Confirmado!
+
             </h1>
 
-            <p id="resumo"></p>
+            <p id="summary"></p>
 
-            <div class="recompensas">
+            <div class="reward">
 
-                <h3>
-                    Recompensas desbloqueadas:
-                </h3>
+                <h3>Recompensas desbloqueadas:</h3>
 
-                <p>😺 Uma promessa de muitos sorrisos</p>
-                <p>😂 Minhas piadas ruins (inclusas)</p>
-                <p>😎 Minha companhia</p>
-                <p>❤️ Um encontro especial</p>
+                <p> 😺 Prometo te dar um gatinho</p>
+
+                <p>😅 Vai rir das minhas piadas Ruins</p>
+
+                <p>😎 Minha ilustre presença</p>
+
+                <p>❤️ 12 horas de conversa antes do beijo</p>
 
             </div>
 
+            <button id="btnInstagram">
+
+                💬 Confirmar no Instagram
+
+            </button>
+
         </section>
 
-    </main>
+    </div>
 
-
-    <canvas id="confetes"></canvas>
-
+    <canvas id="confetti"></canvas>
 
     <script src="script.js"></script>
 
 </body>
 
 </html>
-```
