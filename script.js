@@ -1,227 +1,254 @@
-```javascript id="4w9l9x"
-let telaAtual = 1;
+/*==========================================
+    CONFIGURAÇÕES
+==========================================*/
 
+const SEU_NOME = "Hugo";
+const WHATSAPP = "55816992894607"; // Troque pelo seu número
 
-// Troca de telas
-function proximaTela(numero) {
+/*==========================================
+    TELAS
+==========================================*/
 
-    document
-        .getElementById(`tela${telaAtual}`)
-        .classList.remove("ativa");
+const screens = document.querySelectorAll(".screen");
 
+function showScreen(id) {
 
-    document
-        .getElementById(`tela${numero}`)
-        .classList.add("ativa");
+    screens.forEach(screen => {
 
+        screen.classList.remove("active");
 
-    telaAtual = numero;
+    });
 
-}
-
-
-// Botão SIM
-function aceitou() {
-
-    proximaTela(5);
+    document.getElementById(id).classList.add("active");
 
 }
 
+/*==========================================
+    BOTÕES
+==========================================*/
 
-// Botão NÃO fugindo
-const botaoNao = document.getElementById("nao");
+const btnStart = document.getElementById("btnStart");
+const btnOpen = document.getElementById("btnOpen");
+const btnContinue = document.getElementById("btnContinue");
 
-botaoNao.addEventListener("mouseover", function(){
+const btnYes = document.getElementById("btnYes");
+const btnNo = document.getElementById("btnNo");
 
-    const largura =
-        window.innerWidth - 120;
+/*==========================================
+    CARTA
+==========================================*/
 
-    const altura =
-        window.innerHeight - 80;
+const textoCarta = `Oi!
 
+Tenho uma pequena confissão...
 
-    botaoNao.style.position = "fixed";
+Desde que comecei a conversar com você, pensei que seria muito legal passar um tempo ao seu lado.
 
-    botaoNao.style.left =
-        Math.random() * largura + "px";
+Então resolvi fazer esse convite de um jeito diferente.
 
+Prometo boas conversas, muitas risadas e um encontro especial.
 
-    botaoNao.style.top =
-        Math.random() * altura + "px";
+Espero que goste dessa surpresa. ❤️`;
 
+let index = 0;
 
-    document.getElementById("mensagem").innerHTML =
-        "Tem certeza? 😅";
+function escreverCarta() {
 
+    const area = document.getElementById("letter");
+
+    area.innerHTML = "";
+
+    index = 0;
+
+    const timer = setInterval(() => {
+
+        area.innerHTML += textoCarta[index];
+
+        index++;
+
+        if (index >= textoCarta.length) {
+
+            clearInterval(timer);
+
+        }
+
+    }, 35);
+
+}
+
+/*==========================================
+    TRANSIÇÕES
+==========================================*/
+
+btnStart.onclick = () => {
+
+    showScreen("screen2");
+
+}
+
+btnOpen.onclick = () => {
+
+    showScreen("screen3");
+
+    escreverCarta();
+
+}
+
+btnContinue.onclick = () => {
+
+    showScreen("screen4");
+
+}
+
+/*==========================================
+    BOTÃO NÃO
+==========================================*/
+
+const frases = [
+
+    "😂 Quase conseguiu.",
+
+    "🤨 Tem certeza?",
+
+    "🏃 Esse botão faz academia.",
+
+    "🚀 Nem a NASA pega ele.",
+
+    "😂 Boa tentativa.",
+
+    "❤️ Acho que você queria apertar o SIM.",
+
+    "😎 Eu já esperava por isso.",
+
+    "👀 Tá insistindo mesmo?",
+
+    "🤖 Erro 404: botão não encontrado.",
+
+    "😂 Esse botão é muito rápido."
+
+];
+
+const funny = document.getElementById("funnyMessage");
+
+let tentativas = 0;
+
+function moverBotao() {
+
+    tentativas++;
+
+    const largura = window.innerWidth - 250;
+
+    const altura = window.innerHeight - 200;
+
+    btnNo.style.left = Math.random() * largura + "px";
+
+    btnNo.style.top = Math.random() * altura + "px";
+
+    funny.innerHTML = frases[Math.floor(Math.random() * frases.length)];
+
+    if (tentativas == 8) {
+
+        funny.innerHTML = "😂 Tá bom... você realmente tentou bastante.";
+
+    }
+
+}
+
+btnNo.addEventListener("mouseenter", moverBotao);
+
+btnNo.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
+
+    moverBotao();
 
 });
 
+/*==========================================
+    BOTÃO SIM
+==========================================*/
 
-// Confirmar encontro
-function confirmar(){
+btnYes.onclick = () => {
 
-    const data =
-        document.getElementById("data").value;
+    showScreen("screen5");
 
+}
 
-    const hora =
-        document.getElementById("hora").value;
+/*==========================================
+    CORAÇÕES
+==========================================*/
 
+const particles = document.getElementById("particles");
 
-    if(!data || !hora){
+setInterval(() => {
 
-        alert("Escolha uma data e horário ❤️");
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = (18 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+    particles.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 7000);
+
+}, 350);
+/*==========================================
+    CONFIRMAR DATA
+==========================================*/
+
+btnConfirm.addEventListener("click", () => {
+
+    const data = document.getElementById("meetingDate").value;
+    const hora = document.getElementById("meetingTime").value;
+
+    if (!data) {
+        alert("Escolha uma data ❤️");
         return;
-
     }
 
-
-    document.getElementById("resumo").innerHTML =
-
-        `Nosso encontro está marcado para:
-        <br><br>
-        📅 ${data}
-        <br>
-        ⏰ ${hora}
-        <br><br>
-        Mal posso esperar, Luana ❤️`;
-
-
-    proximaTela(6);
-
-    iniciarConfetes();
-
-}
-
-
-
-// Confetes
-function iniciarConfetes(){
-
-    const canvas =
-        document.getElementById("confetes");
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    canvas.width =
-        window.innerWidth;
-
-
-    canvas.height =
-        window.innerHeight;
-
-
-    let pecas = [];
-
-
-    for(let i = 0; i < 150; i++){
-
-        pecas.push({
-
-            x: Math.random()*canvas.width,
-
-            y: Math.random()*canvas.height
-                - canvas.height,
-
-            tamanho:
-                Math.random()*8+4,
-
-            velocidade:
-                Math.random()*4+2,
-
-            cor:
-                `hsl(${Math.random()*360},100%,70%)`
-
-        });
-
+    if (!hora) {
+        alert("Escolha um horário ❤️");
+        return;
     }
 
+    const dataFormatada = new Date(data + "T00:00:00").toLocaleDateString("pt-BR");
 
-    function animar(){
+    document.getElementById("summary").innerHTML = `
+        ❤️ Nosso encontro ficou marcado para o dia <b>${dataFormatada}</b><br><br>
+        🕒 Às <b>${hora}</b><br><br>
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+        Redirecionando para o WhatsApp em <b>3 segundos...</b> 💬
+    `;
 
+    showScreen("screen6");
 
-        pecas.forEach(p=>{
+    setTimeout(() => {
 
-            ctx.fillStyle = p.cor;
+        const mensagem = `Oi ${SEU_NOME}! ❤️
 
-            ctx.fillRect(
-                p.x,
-                p.y,
-                p.tamanho,
-                p.tamanho
-            );
+Aceitei seu convite! 🥰
 
+Nosso encontro ficou marcado para:
 
-            p.y += p.velocidade;
+📅 ${dataFormatada}
+🕒 ${hora}
 
+Mal posso esperar! ❤️`;
 
-            if(p.y > canvas.height){
+        window.location.href =
+            `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
 
-                p.y = -10;
+    }, 3000);
 
-            }
-
-        });
-
-
-        requestAnimationFrame(animar);
-
-    }
-
-
-    animar();
-
-}
-
-
-// Corações flutuando no fundo
-function criarCoracao(){
-
-    const coracao =
-        document.createElement("div");
-
-
-    coracao.innerHTML = "❤️";
-
-
-    coracao.style.position = "fixed";
-
-    coracao.style.left =
-        Math.random()*100 + "vw";
-
-
-    coracao.style.bottom = "-20px";
-
-
-    coracao.style.fontSize =
-        Math.random()*20+15+"px";
-
-
-    coracao.style.animation =
-        "subir 5s linear";
-
-
-    document.body.appendChild(coracao);
-
-
-    setTimeout(()=>{
-
-        coracao.remove();
-
-    },5000);
-
-}
-
-
-setInterval(criarCoracao,500);
-```
+});
